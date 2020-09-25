@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "spa"
+    }
+  },
+  "defaultProject": "spa",
+  "cli": {
+    "analytics": "5c76cf0d-ff87-40cc-b43f-5a30b1d4609b"
+  }
 }
