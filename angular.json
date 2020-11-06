@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "spa": {
+    "spaApp": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/spa",
+            "outputPath": "dist/spaApp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -62,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "spa:build"
+            "browserTarget": "spaApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "spa:build:production"
+              "browserTarget": "spaApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "spa:build"
+            "browserTarget": "spaApp:build"
           }
         },
         "test": {
@@ -88,7 +92,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -110,19 +114,23 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "spa:serve"
+            "devServerTarget": "spaApp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "spa:serve:production"
+              "devServerTarget": "spaApp:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "spa",
+  "defaultProject": "spaApp",
   "cli": {
-    "analytics": "5c76cf0d-ff87-40cc-b43f-5a30b1d4609b"
+    "analytics": false
   }
 }
